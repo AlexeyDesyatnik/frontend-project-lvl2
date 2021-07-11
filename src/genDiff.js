@@ -1,6 +1,6 @@
 // Format diff line for given key:value pair and its status
 // status could be '-', '+', ' '
-const formatDiffLine = (key, value, indent = 2) => {
+const formatDiffLine = (key, value, status, indent = 2) => {
   const spaces = ' '.repeat(indent);
   return spaces + `${status} ${key}: ${value}`;
 };
@@ -34,9 +34,9 @@ const genDiff = (objectA, objectB) => {
   const listOfAllKeys = Object.keys(objectA).concat(Object.keys(objectB));
   const allKeys = [...new Set(listOfAllKeys)].sort();
   const diff = ['{'];
-  for (const key in allKeys) {
+  for (const key of allKeys) {
     const valueA = objectA[key];
-    const valueB = objectA[key];
+    const valueB = objectB[key];
     const keyDiff = genKeyDiff(key, valueA, valueB);
     diff.push(...keyDiff);
   }
