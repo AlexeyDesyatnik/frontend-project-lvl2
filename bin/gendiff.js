@@ -11,7 +11,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format [type]', 'output format')
-  .action((filepath1, filepath2, options) => {
+  .action((filepath1, filepath2) => {
     const diff = genDiffJSON(filepath1, filepath2);
     console.log(diff);
   });

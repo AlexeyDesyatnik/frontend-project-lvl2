@@ -2,7 +2,7 @@
 // status could be '-', '+', ' '
 const formatDiffLine = (key, value, status, indent = 2) => {
   const spaces = ' '.repeat(indent);
-  return spaces + `${status} ${key}: ${value}`;
+  return `${spaces}${status} ${key}: ${value}`;
 };
 
 // Generate diff for given key and its values in objects A and B
@@ -34,12 +34,12 @@ const genDiff = (objectA, objectB) => {
   const listOfAllKeys = Object.keys(objectA).concat(Object.keys(objectB));
   const allKeys = [...new Set(listOfAllKeys)].sort();
   const diff = ['{'];
-  for (const key of allKeys) {
+  allKeys.forEach((key) => {
     const valueA = objectA[key];
     const valueB = objectB[key];
     const keyDiff = genKeyDiff(key, valueA, valueB);
     diff.push(...keyDiff);
-  }
+  });
   diff.push('}');
   return diff.join('\n');
 };
