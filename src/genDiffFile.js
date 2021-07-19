@@ -3,7 +3,7 @@ import path from 'path';
 import genDiff from './genDiff.js';
 
 // Generate diff of two JSON files
-const genDiffJSON = (filepathA, filepathB) => {
+const genDiffFile = (filepathA, filepathB) => {
   const fullPathA = path.resolve(filepathA);
   const fullPathB = path.resolve(filepathB);
 
@@ -16,4 +16,4 @@ const genDiffJSON = (filepathA, filepathB) => {
   return genDiff(jsonA, jsonB);
 };
 
-export default genDiffJSON;
+export default genDiffFile;

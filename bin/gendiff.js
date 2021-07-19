@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander/esm.mjs';
-import genDiffJSON from '../src/genDiffJSON.js';
+import genDiffFile from '../src/genDiffFile.js';
 
 const program = new Command();
 
@@ -12,7 +12,7 @@ program
   .argument('<filepath2>')
   .option('-f, --format [type]', 'output format')
   .action((filepath1, filepath2) => {
-    const diff = genDiffJSON(filepath1, filepath2);
+    const diff = genDiffFile(filepath1, filepath2);
     console.log(diff);
   });
 
